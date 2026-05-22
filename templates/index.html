@@ -13,11 +13,17 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        body {
-            background-color: #f8f9fa;
-            color: #333;
-            line-height: 1.6;
-        }
+       body {
+
+    background:var(--bg-color);
+
+    color:var(--text-color);
+
+    line-height:1.6;
+
+    transition:0.4s;
+
+}
 
         .container {
             max-width: 1200px;
@@ -428,6 +434,9 @@
     </style>
 </head>
 <body>
+                    <button id="themeToggle" class="theme-toggle">
+    🌙
+</button>
     <!-- Debug info - remove this in production -->
     <div class="debug-info" id="debugInfo">
         Checking image loading...
@@ -457,10 +466,10 @@
                     <h1>Virtual <span>Labs</span></h1>
                 </div>
             </div>
-            
+           
             <div class="user-info">
                 <i class="fas fa-user-circle"></i>
-                <span>Why, Neel why do you do this bs</span>
+                <span>Welcome to Ode solver and learning</span>
             </div>
         </div>
     </header>
@@ -468,17 +477,20 @@
         <!-- Content Area -->
         <main class="content">
             <div class="content-header">
-                
-                <h2>A Virtual Lab on Rank of Matrix</h2>
+
+                <h2>A Virtual Lab on Ordinary Differential Equations by genral method</h2>
                 <p>Engineering Mathematics Experiment</p>
             </div>
 
             <!-- Aim Sections -->
+              <a href="/aim" class="card-link">
             <div class="aim-sections">
                 <div class="section-card active">
                     <i class="fas fa-bullseye"></i>
                     <h3>Aim</h3>
                     <p>Objective of the experiment</p>
+                   
+                    </a>
                 </div>
                 <div class="section-card">
                     <i class="fas fa-book"></i>
@@ -490,11 +502,19 @@
                     <h3>Pretest</h3>
                     <p>Pre-experiment assessment</p>
                 </div>
-                <div class="section-card">
-                    <i class="fas fa-desktop"></i>
-                    <h3>Simulation</h3>
-                    <p>Interactive simulation</p>
-                </div>
+               <a href="/simulation" class="simulation-link">
+
+<div class="section-card">
+
+    <i class="fas fa-desktop"></i>
+
+    <h3>Simulation</h3>
+
+    <p>Interactive simulation</p>
+
+</div>
+
+</a>
                 <div class="section-card">
                     <i class="fas fa-clipboard-check"></i>
                     <h3>Posttest</h3>
@@ -588,5 +608,7 @@
             sectionCards[0].classList.add('active');
         });
     </script>
+    <script src="{{ url_for('static',
+filename='script.js') }}"></script>
 </body>
 </html>

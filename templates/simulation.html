@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ODE Simulation</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<button id="themeToggle"
+        class="theme-toggle">
+    🌙
+</button>
+
+<div class="simulation-page">
+
+    <div class="simulation-header">
+
+        <h1>
+            ODE Solver Simulation
+        </h1>
+
+        <a href="/">
+            <button>
+                Back Home
+            </button>
+        </a>
+
+    </div>
+
+    <div class="solver-panel">
+
+    <h2>
+        Interactive ODE Learning
+    </h2>
+<h3>
+    How to put eqations in the simulation :
+    <br>
+Variable  : x
+<br>
+  Function  : y   ->  write  y(x)
+  <br>
+  Derivatives:
+      diff(y(x), x)       1st order
+      <br>
+      diff(y(x), x, 2)    2nd order
+      <br>
+      diff(y(x), x, 3)    3rd order
+<br>
+  Examples:
+    diff(y(x), x, 2) + 4*y(x) = sin(2*x)
+    <br>diff(y(x), x) + 2*y(x) = exp(-x)
+    <br>diff(y(x), x, 2) - 3*diff(y(x), x) + 2*y(x) = exp(x)
+    <br>diff(y(x), x, 2) + 4*diff(y(x), x) + 4*y(x) = x*exp(-2*x)
+    diff(y(x), x, 2) + y(x) = 0           (homogeneous)
+<br>
+  Or enter just the LHS (RHS assumed 0):
+    diff(y(x), x, 2) + 4*y(x) - sin(2*x)
+</h3>
+    <textarea id="equationInput"
+placeholder="Example:
+diff(y(x),x,2)+4*y(x)=sin(2*x)">
+    </textarea>
+
+    <button onclick="startLearning()">
+        Start Learning
+    </button>
+
+</div>
+
+
+<!-- STEP 1 -->
+
+<div class="step-card" id="step1">
+
+    <h3>
+        Step 1: Find Auxiliary Equation
+    </h3>
+
+    <input type="text"
+           id="auxInput"
+           placeholder="Enter auxiliary equation">
+
+    <button onclick="checkAux()">
+        Check Answer
+    </button>
+
+    <div id="auxFeedback"></div>
+
+</div>
+
+
+<!-- STEP 2 -->
+
+<div class="step-card" id="step2">
+
+    <h3>
+        Step 2: Find Roots
+    </h3>
+
+    <input type="text"
+           id="rootsInput"
+           placeholder="Enter roots">
+
+    <button onclick="checkRoots()">
+        Check Roots
+    </button>
+
+    <div id="rootsFeedback"></div>
+
+</div>
+
+
+<!-- STEP 3 -->
+
+<div class="step-card" id="step3">
+
+    <h3>
+        Step 3: Find Complementary Solution yc
+    </h3>
+
+    <input type="text"
+           id="ycInput"
+           placeholder="Enter yc">
+
+    <button onclick="checkYC()">
+        Check yc
+    </button>
+
+    <div id="ycFeedback"></div>
+
+</div>
+
+
+<!-- STEP 4 -->
+
+<div class="step-card" id="step4">
+
+    <h3>
+        Step 4: Find Particular Solution yp
+    </h3>
+
+    <input type="text"
+           id="ypInput"
+           placeholder="Enter yp">
+
+    <button onclick="checkYP()">
+        Check yp
+    </button>
+
+    <div id="ypFeedback"></div>
+
+</div>
+
+
+<!-- FINAL -->
+
+<div class="step-card" id="finalStep">
+
+    <h3>
+        Final Solution
+    </h3>
+
+    <button onclick="showFinalSolution()">
+        Show Final Answer
+    </button>
+
+    <pre id="finalResult"></pre>
+
+</div>
+
+  
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
